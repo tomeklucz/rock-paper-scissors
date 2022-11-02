@@ -17,51 +17,51 @@
       </div>
     </header>
     <main>
-      <div class="selection-stage hidden">
+      <div class="selection-stage">
         <img class="triangle-img" src="images/bg-triangle.svg" alt="" />
-        <div class="symbol-container paper top-left absolute">
+        <div class="symbol-container paper top-left scale">
           <div class="inner-circle">
-            <img src="images/icon-paper.svg" alt="" class="icon" />
+            <img src="images/icon-paper.svg" alt="" />
           </div>
         </div>
-        <div class="symbol-container scissors top-right absolute">
+        <div class="symbol-container scissors top-right scale">
           <div class="inner-circle">
-            <img src="images/icon-scissors.svg" alt="" class="icon" />
+            <img src="images/icon-scissors.svg" alt="" />
           </div>
         </div>
-        <div class="symbol-container rock bottom-center absolute">
+        <div class="symbol-container rock bottom-center">
           <div class="inner-circle">
-            <img src="images/icon-rock.svg" alt="" class="icon" />
+            <img src="images/icon-rock.svg" alt="" />
           </div>
         </div>
       </div>
-      <div class="duel-stage">
+      <div class="duel-stage hidden">
         <div class="picking-container">
-          <div class="picked-item">
-            <span class="picked-text hidden">you picked</span>
+          <div class="picked-item scale">
+            <span class="picked-text only-desktop">you picked</span>
             <div class="symbol-container paper">
               <div class="inner-circle">
-                <img src="images/icon-paper.svg" alt="" class="icon" />
+                <img src="images/icon-paper.svg" alt="" />
               </div>
             </div>
             <div class="symbol-placeholder hidden"></div>
-            <span class="picked-text">you picked</span>
+            <span class="picked-text only-mobile">you picked</span>
           </div>
-          <div class="results-container hidden">
+          <div class="results-container only-desktop">
             <span class="result-info">you lose</span>
             <button class="play-again-btn">play again</button>
           </div>
-          <div class="picked-item">
-            <span class="picked-text hidden">the house picked</span>
+          <div class="picked-item scale">
+            <span class="picked-text only-desktop">the house picked</span>
             <div class="symbol-container scissors">
               <div class="inner-circle">
-                <img src="images/icon-scissors.svg" alt="" class="icon" />
+                <img src="images/icon-scissors.svg" alt="" />
               </div>
             </div>
-            <span class="picked-text">the house picked</span>
+            <span class="picked-text only-mobile">the house picked</span>
           </div>
         </div>
-        <div class="results-container">
+        <div class="results-container only-mobile">
           <span class="result-info">you lose</span>
           <button class="play-again-btn">play again</button>
         </div>
@@ -72,3 +72,8 @@
     </footer>
   </body>
 </html>
+
+<!-- DO ZROBIENIA: 
+- modal window
+- podmienić h1 na logo z obrazków
+- to dziwne zaznaczenie kto wygrał ?  -->
