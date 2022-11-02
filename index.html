@@ -8,5 +8,67 @@
 
     <title>Rock, Paper, Scissors</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <h1>rock<br />paper<br />scissors</h1>
+      <div class="score-container">
+        <h2 class="score-text">score</h2>
+        <p class="score-result">10</p>
+      </div>
+    </header>
+    <main>
+      <div class="selection-stage hidden">
+        <img class="triangle-img" src="images/bg-triangle.svg" alt="" />
+        <div class="symbol-container paper top-left absolute">
+          <div class="inner-circle">
+            <img src="images/icon-paper.svg" alt="" class="icon" />
+          </div>
+        </div>
+        <div class="symbol-container scissors top-right absolute">
+          <div class="inner-circle">
+            <img src="images/icon-scissors.svg" alt="" class="icon" />
+          </div>
+        </div>
+        <div class="symbol-container rock bottom-center absolute">
+          <div class="inner-circle">
+            <img src="images/icon-rock.svg" alt="" class="icon" />
+          </div>
+        </div>
+      </div>
+      <div class="duel-stage">
+        <div class="picking-container">
+          <div class="picked-item">
+            <span class="picked-text hidden">you picked</span>
+            <div class="symbol-container paper">
+              <div class="inner-circle">
+                <img src="images/icon-paper.svg" alt="" class="icon" />
+              </div>
+            </div>
+            <div class="symbol-placeholder hidden"></div>
+            <span class="picked-text">you picked</span>
+          </div>
+          <div class="results-container hidden">
+            <span class="result-info">you lose</span>
+            <button class="play-again-btn">play again</button>
+          </div>
+          <div class="picked-item">
+            <span class="picked-text hidden">the house picked</span>
+            <div class="symbol-container scissors">
+              <div class="inner-circle">
+                <img src="images/icon-scissors.svg" alt="" class="icon" />
+              </div>
+            </div>
+            <span class="picked-text">the house picked</span>
+          </div>
+        </div>
+        <div class="results-container">
+          <span class="result-info">you lose</span>
+          <button class="play-again-btn">play again</button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <button class="rules-btn">rules</button>
+    </footer>
+  </body>
 </html>
