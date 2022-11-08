@@ -28,23 +28,54 @@ input {
   --rock-gradient: hsl(349, 71%, 52%), hsl(349, 70%, 56%);
   --dark-text: hsl(229, 25%, 31%);
   --score-text: hsl(229, 64%, 46%);
-  --white-text: hsl(0, 100%, 100%);
+  --white: hsl(0, 100%, 100%);
   --header-outline: hsl(217, 16%, 45%);
   --radial-gradient: hsl(214, 47%, 23%), hsl(237, 49%, 15%);
 }
 
 body {
   font-family: "Barlow Semi Condensed", sans-serif;
-  min-height: 100vh;
+  height: 100vh;
   font-weight: 700;
   line-height: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: var(--font-size);
-  color: var(--white-text);
+  color: var(--white);
   background: linear-gradient(var(--radial-gradient));
   background-repeat: no-repeat;
+}
+
+/* MODAL WINDOW */
+.modal-box {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-header-container {
+  margin-bottom: 5rem;
+}
+
+.modal-header {
+  color: var(--dark-text);
+  font-size: calc(2 * var(--font-size));
+  text-transform: uppercase;
+}
+
+.btn-close-modal {
+  margin: 5rem 0 2rem;
+}
+
+.modal-rules-img {
+  max-width: 100%;
 }
 
 header {
@@ -69,7 +100,7 @@ h1 {
 .score-container {
   height: 7rem;
   width: 7rem;
-  background-color: var(--white-text);
+  background-color: var(--white);
   font-weight: 600;
   border-radius: 10px;
   display: flex;
@@ -102,15 +133,17 @@ main {
 
 .selection-stage {
   position: relative;
+  max-width: 90%;
 }
 
 .triangle-img {
-  height: 12rem;
+  max-height: 11rem;
+  width: 100%;
 }
 
 .symbol-container {
-  height: 130px;
-  width: 130px;
+  height: 120px;
+  width: 120px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -123,9 +156,9 @@ main {
 }
 
 .inner-circle {
-  background-color: var(--white-text);
-  height: 100px;
-  width: 100px;
+  background-color: var(--white);
+  height: 90px;
+  width: 90px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -160,12 +193,12 @@ main {
   left: 50%;
 }
 
-.rules-btn {
+.btn-rules {
   text-transform: uppercase;
   width: 10rem;
-  margin-top: 2rem;
+  margin: 2rem 0;
   padding: 1rem;
-  border: 2px var(--white-text) solid;
+  border: 2px var(--white) solid;
   border-radius: 10px;
   letter-spacing: 3px;
   font-weight: 600;
@@ -229,7 +262,7 @@ main {
   text-transform: uppercase;
   width: 100%;
   padding: 1rem;
-  background-color: var(--white-text);
+  background-color: var(--white);
   color: var(--dark-text);
   border-radius: 10px;
   letter-spacing: 3px;
@@ -263,6 +296,45 @@ main {
     max-width: 1024px;
   }
 
+  .modal-box {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    width: 500px;
+    padding: 3rem;
+    border-radius: 20px;
+  }
+
+  .modal-header-container {
+    margin-bottom: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .modal-rules-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .btn-close-modal {
+    height: 100%;
+    width: auto;
+    margin: 0;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: brightness(50%);
+    z-index: 5;
+  }
+
   .triangle-img {
     height: 15rem;
   }
@@ -281,11 +353,6 @@ main {
 
   .results-container {
     margin: 0 5rem;
-  }
-
-  footer {
-    align-self: flex-end;
-    margin-right: 5rem;
   }
 
   .only-mobile {

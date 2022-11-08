@@ -5,10 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
 
     <title>Rock, Paper, Scissors</title>
   </head>
   <body>
+    <div class="modal-box hidden">
+      <div class="modal-header-container">
+        <span class="modal-header">rules</span>
+        <button class="btn-close-modal only-desktop">
+          <img src="images/icon-close.svg" alt="" />
+        </button>
+      </div>
+      <img class="modal-rules-img" src="images/image-rules.svg" alt="" />
+      <button class="btn-close-modal only-mobile">
+        <img src="images/icon-close.svg" alt="" />
+      </button>
+    </div>
+    <div class="overlay only-desktop hidden"></div>
     <header>
       <h1>rock<br />paper<br />scissors</h1>
       <div class="score-container">
@@ -68,7 +82,7 @@
       </div>
     </main>
     <footer>
-      <button class="rules-btn">rules</button>
+      <button class="btn-rules">rules</button>
     </footer>
   </body>
 </html>
@@ -76,4 +90,6 @@
 <!-- DO ZROBIENIA: 
 - modal window
 - podmienić h1 na logo z obrazków
-- to dziwne zaznaczenie kto wygrał ?  -->
+- to dziwne zaznaczenie kto wygrał ?
+- na telefonie jeszcze trochę za duże przerwy są
+  -->
