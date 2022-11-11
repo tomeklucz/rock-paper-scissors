@@ -24,26 +24,26 @@
     </div>
     <div class="overlay only-desktop hidden"></div>
     <header>
-      <h1>rock<br />paper<br />scissors</h1>
+      <img src="images/logo.svg" alt="" />
       <div class="score-container">
-        <h2 class="score-text">score</h2>
-        <p class="score-result">10</p>
+        <span class="score-text">score</span>
+        <span class="score-result">0</span>
       </div>
     </header>
     <main>
       <div class="selection-stage">
         <img class="triangle-img" src="images/bg-triangle.svg" alt="" />
-        <div class="symbol-container paper top-left scale">
+        <div id="paper" class="symbol-container top-left scale">
           <div class="inner-circle">
             <img src="images/icon-paper.svg" alt="" />
           </div>
         </div>
-        <div class="symbol-container scissors top-right scale">
+        <div id="scissors" class="symbol-container top-right scale">
           <div class="inner-circle">
             <img src="images/icon-scissors.svg" alt="" />
           </div>
         </div>
-        <div class="symbol-container rock bottom-center">
+        <div id="rock" class="symbol-container bottom-center">
           <div class="inner-circle">
             <img src="images/icon-rock.svg" alt="" />
           </div>
@@ -53,32 +53,17 @@
         <div class="picking-container">
           <div class="picked-item scale">
             <span class="picked-text only-desktop">you picked</span>
-            <div class="symbol-container paper">
-              <div class="inner-circle">
-                <img src="images/icon-paper.svg" alt="" />
-              </div>
-            </div>
-            <div class="symbol-placeholder hidden"></div>
+            <div class="player-placeholder symbol-placeholder"></div>
             <span class="picked-text only-mobile">you picked</span>
           </div>
-          <div class="results-container only-desktop">
-            <span class="result-info">you lose</span>
-            <button class="play-again-btn">play again</button>
-          </div>
+          <div class="results-container only-desktop"></div>
           <div class="picked-item scale">
             <span class="picked-text only-desktop">the house picked</span>
-            <div class="symbol-container scissors">
-              <div class="inner-circle">
-                <img src="images/icon-scissors.svg" alt="" />
-              </div>
-            </div>
+            <div class="opponent-placeholder symbol-placeholder"></div>
             <span class="picked-text only-mobile">the house picked</span>
           </div>
         </div>
-        <div class="results-container only-mobile">
-          <span class="result-info">you lose</span>
-          <button class="play-again-btn">play again</button>
-        </div>
+        <div class="results-container only-mobile hidden"></div>
       </div>
     </main>
     <footer>
@@ -88,8 +73,5 @@
 </html>
 
 <!-- DO ZROBIENIA: 
-- modal window
-- podmienić h1 na logo z obrazków
-- to dziwne zaznaczenie kto wygrał ?
-- na telefonie jeszcze trochę za duże przerwy są
+
   -->

@@ -35,7 +35,11 @@ input {
 
 body {
   font-family: "Barlow Semi Condensed", sans-serif;
-  height: 100vh;
+  /* min-height: 50vh;
+  max-height: 90vh; */
+  min-height: 100vh;
+  background: linear-gradient(var(--radial-gradient));
+  background-repeat: no-repeat;
   font-weight: 700;
   line-height: 1;
   display: flex;
@@ -43,25 +47,20 @@ body {
   align-items: center;
   font-size: var(--font-size);
   color: var(--white);
-  background: linear-gradient(var(--radial-gradient));
-  background-repeat: no-repeat;
+  /* overflow: hidden; */
 }
 
 /* MODAL WINDOW */
 .modal-box {
-  position: absolute;
+  position: fixed;
   height: 100%;
   width: 100%;
   background-color: var(--white);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   z-index: 10;
-}
-
-.modal-header-container {
-  margin-bottom: 5rem;
 }
 
 .modal-header {
@@ -70,12 +69,9 @@ body {
   text-transform: uppercase;
 }
 
-.btn-close-modal {
-  margin: 5rem 0 2rem;
-}
-
 .modal-rules-img {
-  max-width: 100%;
+  width: 60%;
+  height: auto;
 }
 
 header {
@@ -89,12 +85,6 @@ header {
   height: 9rem;
   border: 3px var(--header-outline) solid;
   border-radius: 10px;
-}
-
-h1 {
-  text-transform: uppercase;
-  font-size: calc(1.8 * (var(--font-size)));
-  margin: 1rem;
 }
 
 .score-container {
@@ -123,7 +113,7 @@ h1 {
 }
 
 main {
-  height: 30rem;
+  min-height: 24rem;
   width: 90%;
   max-width: 800px;
   display: flex;
@@ -137,7 +127,9 @@ main {
 }
 
 .triangle-img {
-  max-height: 11rem;
+  height: 10rem;
+  max-height: 30rem;
+  /* margin: 10rem 0; */
   width: 100%;
 }
 
@@ -165,7 +157,7 @@ main {
   align-items: center;
 }
 
-.paper {
+#paper {
   background: linear-gradient(var(--paper-gradient));
 }
 
@@ -174,7 +166,7 @@ main {
   left: -65px;
 }
 
-.scissors {
+#scissors {
   background: linear-gradient(var(--scissors-gradient));
 }
 
@@ -183,7 +175,7 @@ main {
   right: -65px;
 }
 
-.rock {
+#rock {
   background: linear-gradient(var(--rock-gradient));
 }
 
@@ -205,7 +197,7 @@ main {
 }
 
 .duel-stage {
-  height: 30rem;
+  min-height: 24rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -214,7 +206,7 @@ main {
 }
 
 .picking-container {
-  height: 20rem;
+  /* height: 14rem; */
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -245,8 +237,8 @@ main {
 }
 
 .results-container {
-  height: 10rem;
-  width: 12rem;
+  /* height: 10rem; */
+  /* width: 12rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -256,11 +248,12 @@ main {
 .result-info {
   text-transform: uppercase;
   font-size: calc(2.5 * (var(--font-size)));
+  margin: 1rem 0;
 }
 
-.play-again-btn {
+.btn-play-again {
   text-transform: uppercase;
-  width: 100%;
+  width: 12rem;
   padding: 1rem;
   background-color: var(--white);
   color: var(--dark-text);
@@ -283,6 +276,10 @@ main {
   display: none !important;
 }
 
+.winner {
+  box-shadow: 0px 0px 20px 5px var(--white);
+}
+
 /* MEDIA QUERIES */
 @media (min-width: 600px) {
   .duel-stage .scale {
@@ -301,7 +298,8 @@ main {
     left: 50%;
     transform: translate(-50%, -50%);
     height: auto;
-    width: 500px;
+    min-height: 50%;
+    width: 40%;
     padding: 3rem;
     border-radius: 20px;
   }
@@ -326,7 +324,7 @@ main {
   }
 
   .overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
