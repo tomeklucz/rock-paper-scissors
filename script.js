@@ -11,122 +11,143 @@ const opponentPlaceholder = document.querySelector(".opponent-placeholder");
 const resultsContainer = document.querySelectorAll(".results-container");
 const playAgainBtn = document.querySelectorAll(".btn-play-again");
 const scoreResult = document.querySelector(".score-result");
-let playerSymbol, opponentSymbol;
-let currentScore = 0;
 
-closeModalBtn.forEach((btn) =>
-  btn.addEventListener("click", function () {
-    modalBox.classList.add("hidden");
-    overlay.classList.add("hidden");
-  })
-);
+/* ROCK, PAPER, SCISSORS GAME APP */
+const gameApp = function () {
+  let playerSymbol, opponentSymbol;
+  let currentScore = 0;
+  const timeDelay = 500;
 
-rulesBtn.addEventListener("click", function () {
-  modalBox.classList.remove("hidden");
-  overlay.classList.remove("hidden");
-});
-
-duelStage.addEventListener("click", function (e) {
-  console.log(e.target.classList);
-  if (e.target.classList.contains("btn-play-again")) playAgain();
-});
-
-selectionStage.addEventListener("click", function (e) {
-  const el = e.target.closest(".symbol-container");
-  if (!el) return;
-  playerSymbol = el.id;
-  opponentSymbol = generateSymbol();
-  console.log(playerSymbol, opponentSymbol);
-  selectionStage.classList.add("hidden");
-  duelStage.classList.remove("hidden");
-  setTimeout(() => {
-    createSymbol(playerSymbol, playerPlaceholder);
-    setTimeout(() => {
-      createSymbol(opponentSymbol, opponentPlaceholder);
-      setTimeout(() => {
-        playGame(playerSymbol, opponentSymbol);
-      }, 500);
-    }, 500);
-  }, 500);
-});
-
-const generateSymbol = () => {
-  let randomSymbol;
-  const randomNumber = Math.floor(Math.random() * 3) + 1;
-  if (randomNumber === 1) randomSymbol = "rock";
-  if (randomNumber === 2) randomSymbol = "paper";
-  if (randomNumber === 3) randomSymbol = "scissors";
-  return randomSymbol;
-};
-
-const checkResult = function (player, opponent) {
-  let result;
-  if (player === "rock")
-    opponent === "paper" ? (result = "lose") : (result = "win");
-  if (player === "paper")
-    opponent === "scissors" ? (result = "lose") : (result = "win");
-  if (player === "scissors")
-    opponent === "rock" ? (result = "lose") : (result = "win");
-  if (player === opponent) result = "draw";
-  return result;
-};
-
-const playGame = function (player, opponent) {
-  const result = checkResult(player, opponent);
-  const playerSymbol = document.querySelector(".player-symbol");
-  const opponentSymbol = document.querySelector(".opponent-symbol");
-  if (result === "win") {
-    currentScore++;
-    playerSymbol.classList.add("winner");
-  }
-  if (result === "lose") {
-    currentScore--;
-    opponentSymbol.classList.add("winner");
-  }
-  result === "draw" ? playAgain() : showResults(result);
-  updateScore(currentScore);
-  console.log(result, currentScore);
-};
-
-const showResults = function (result) {
-  const html = `
-  <span class="result-info">you ${result}</span>
-  <button class="btn-play-again">play again</button>`;
-  resultsContainer.forEach((container) => {
-    container.classList.remove("hidden");
-    container.insertAdjacentHTML("afterbegin", html);
+  /* EVENT LISTENERS */
+  /* showing modal window with rules */
+  rulesBtn.addEventListener("click", function () {
+    show(modalBox);
+    show(overlay);
+    document.body.classList.add("overflow");
   });
+
+  /* closing modal window */
+  closeModalBtn.forEach((btn) =>
+    btn.addEventListener("click", function () {
+      hide(modalBox);
+      hide(overlay);
+      document.body.classList.remove("overflow");
+    })
+  );
+
+  /* handling play again button */
+  duelStage.addEventListener("click", function (e) {
+    if (e.target.classList.contains("btn-play-again")) playAgain();
+  });
+
+  /* handling selection and triggering the game */
+  selectionStage.addEventListener("click", function (e) {
+    const el = e.target.closest(".symbol-container");
+    if (!el) return;
+    playerSymbol = el.id;
+    opponentSymbol = generateSymbol();
+    hide(selectionStage);
+    show(duelStage);
+    setTimeout(() => {
+      renderSymbol(playerSymbol, playerPlaceholder);
+      setTimeout(() => {
+        renderSymbol(opponentSymbol, opponentPlaceholder);
+        setTimeout(() => {
+          playGame(playerSymbol, opponentSymbol);
+        }, timeDelay);
+      }, timeDelay);
+    }, timeDelay);
+  });
+
+  /* FUNCTIONS */
+  const hide = (element) => element.classList.add("hidden");
+
+  const show = (element) => element.classList.remove("hidden");
+
+  /* generating random symbol for opponent */
+  const generateSymbol = () => {
+    let randomSymbol;
+    const randomNumber = Math.floor(Math.random() * 3) + 1;
+    if (randomNumber === 1) randomSymbol = "rock";
+    if (randomNumber === 2) randomSymbol = "paper";
+    if (randomNumber === 3) randomSymbol = "scissors";
+    return randomSymbol;
+  };
+
+  /* rendering chosen or generated symbol */
+  const renderSymbol = function (symbol, position) {
+    const html = `
+      <div id="${symbol}" class="symbol-container flex-row-center ${
+      position === playerPlaceholder ? "player-symbol" : "opponent-symbol"
+    }">
+        <div class="inner-circle flex-row-center">
+          <img src="images/icon-${symbol}.svg" alt="" />
+        </div>
+      </div>`;
+    position.insertAdjacentHTML("beforebegin", html);
+    hide(position);
+  };
+
+  /* handling game logic */
+  const playGame = function (player, opponent) {
+    const result = checkResult(player, opponent);
+    const playerSymbol = document.querySelector(".player-symbol");
+    const opponentSymbol = document.querySelector(".opponent-symbol");
+    if (result === "win") {
+      currentScore++;
+      playerSymbol.classList.add("winner");
+    }
+    if (result === "lose") {
+      currentScore--;
+      opponentSymbol.classList.add("winner");
+    }
+    result === "draw" ? playAgain() : renderResult(result);
+    updateScore(currentScore);
+    console.log(result, currentScore);
+  };
+
+  /* comparing symbols and checking the winner */
+  const checkResult = function (player, opponent) {
+    let result;
+    if (player === "rock")
+      opponent === "paper" ? (result = "lose") : (result = "win");
+    if (player === "paper")
+      opponent === "scissors" ? (result = "lose") : (result = "win");
+    if (player === "scissors")
+      opponent === "rock" ? (result = "lose") : (result = "win");
+    if (player === opponent) result = "draw";
+    return result;
+  };
+
+  /* rendering result */
+  const renderResult = function (result) {
+    const html = `
+      <span class="result-info">you ${result}</span>
+      <button class="btn-play-again">play again</button>`;
+    resultsContainer.forEach((container) =>
+      container.insertAdjacentHTML("afterbegin", html)
+    );
+  };
+
+  const updateScore = function (score) {
+    scoreResult.innerHTML = "";
+    scoreResult.innerHTML = score;
+  };
+
+  /* going back to selection stage and playing next round */
+  const playAgain = function () {
+    hide(duelStage);
+    show(selectionStage);
+    removeSymbol(playerPlaceholder);
+    removeSymbol(opponentPlaceholder);
+    show(playerPlaceholder);
+    show(opponentPlaceholder);
+    resultsContainer.forEach((container) => (container.innerHTML = ""));
+  };
+
+  const removeSymbol = function (position) {
+    position.previousSibling.remove();
+  };
 };
 
-const createSymbol = function (symbol, position) {
-  const html = `
-  <div id="${symbol}" class="symbol-container ${
-    position === playerPlaceholder ? "player-symbol" : "opponent-symbol"
-  }">
-    <div class="inner-circle">
-      <img src="images/icon-${symbol}.svg" alt="" />
-    </div>
-  </div>`;
-  console.log(html, position);
-  position.insertAdjacentHTML("beforebegin", html);
-  position.classList.add("hidden");
-};
-
-const clearSymbol = function (position) {
-  position.previousSibling.remove();
-};
-
-const playAgain = function () {
-  duelStage.classList.add("hidden");
-  selectionStage.classList.remove("hidden");
-  clearSymbol(playerPlaceholder);
-  clearSymbol(opponentPlaceholder);
-  playerPlaceholder.classList.remove("hidden");
-  opponentPlaceholder.classList.remove("hidden");
-  resultsContainer.forEach((container) => (container.innerHTML = ""));
-};
-
-const updateScore = function (score) {
-  scoreResult.innerHTML = "";
-  scoreResult.innerHTML = score;
-};
+gameApp();

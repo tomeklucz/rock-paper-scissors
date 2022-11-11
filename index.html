@@ -30,34 +30,37 @@
         <span class="score-result">0</span>
       </div>
     </header>
-    <main>
+    <main class="flex-row-center">
       <div class="selection-stage">
         <img class="triangle-img" src="images/bg-triangle.svg" alt="" />
-        <div id="paper" class="symbol-container top-left scale">
-          <div class="inner-circle">
+        <div id="paper" class="symbol-container flex-row-center top-left scale">
+          <div class="inner-circle flex-row-center">
             <img src="images/icon-paper.svg" alt="" />
           </div>
         </div>
-        <div id="scissors" class="symbol-container top-right scale">
-          <div class="inner-circle">
+        <div
+          id="scissors"
+          class="symbol-container flex-row-center top-right scale"
+        >
+          <div class="inner-circle flex-row-center">
             <img src="images/icon-scissors.svg" alt="" />
           </div>
         </div>
-        <div id="rock" class="symbol-container bottom-center">
-          <div class="inner-circle">
+        <div id="rock" class="symbol-container flex-row-center bottom-center">
+          <div class="inner-circle flex-row-center">
             <img src="images/icon-rock.svg" alt="" />
           </div>
         </div>
       </div>
       <div class="duel-stage hidden">
         <div class="picking-container">
-          <div class="picked-item scale">
+          <div class="picked-item flex-column-center scale">
             <span class="picked-text only-desktop">you picked</span>
             <div class="player-placeholder symbol-placeholder"></div>
             <span class="picked-text only-mobile">you picked</span>
           </div>
           <div class="results-container only-desktop"></div>
-          <div class="picked-item scale">
+          <div class="picked-item flex-column-center scale">
             <span class="picked-text only-desktop">the house picked</span>
             <div class="opponent-placeholder symbol-placeholder"></div>
             <span class="picked-text only-mobile">the house picked</span>
@@ -71,7 +74,3 @@
     </footer>
   </body>
 </html>
-
-<!-- DO ZROBIENIA: 
-
-  -->

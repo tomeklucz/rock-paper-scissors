@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap");
 
-/* RESET */
+/* ---------- RESET ---------- */
 *,
 *::after,
 *::before {
@@ -18,9 +18,10 @@ input {
   font: inherit;
   outline: inherit;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
-/* VARIABLES */
+/* ---------- VARIABLES ---------- */
 :root {
   --font-size: 18px;
   --scissors-gradient: hsl(39, 89%, 49%), hsl(40, 84%, 53%);
@@ -31,12 +32,11 @@ input {
   --white: hsl(0, 100%, 100%);
   --header-outline: hsl(217, 16%, 45%);
   --radial-gradient: hsl(214, 47%, 23%), hsl(237, 49%, 15%);
+  --symbol-size: 120px;
 }
 
 body {
   font-family: "Barlow Semi Condensed", sans-serif;
-  /* min-height: 50vh;
-  max-height: 90vh; */
   min-height: 100vh;
   background: linear-gradient(var(--radial-gradient));
   background-repeat: no-repeat;
@@ -47,10 +47,10 @@ body {
   align-items: center;
   font-size: var(--font-size);
   color: var(--white);
-  /* overflow: hidden; */
+  text-transform: uppercase;
 }
 
-/* MODAL WINDOW */
+/* ---------- MODAL WINDOW ---------- */
 .modal-box {
   position: fixed;
   height: 100%;
@@ -66,19 +66,19 @@ body {
 .modal-header {
   color: var(--dark-text);
   font-size: calc(2 * var(--font-size));
-  text-transform: uppercase;
 }
 
 .modal-rules-img {
-  width: 60%;
-  height: auto;
+  width: auto;
+  height: 60%;
 }
 
+/* ---------- HEADER SECTION ---------- */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   padding: 1rem;
   width: 90%;
   max-width: 800px;
@@ -103,7 +103,6 @@ header {
 .score-text {
   color: var(--score-text);
   font-size: var(--font-size);
-  text-transform: uppercase;
   letter-spacing: 2px;
 }
 
@@ -112,15 +111,14 @@ header {
   font-size: calc(3.5 * (var(--font-size)));
 }
 
+/* ---------- MAIN SECTION ---------- */
 main {
   min-height: 24rem;
   width: 90%;
   max-width: 800px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
+/* ---------- SELECTION STAGE ---------- */
 .selection-stage {
   position: relative;
   max-width: 90%;
@@ -129,17 +127,13 @@ main {
 .triangle-img {
   height: 10rem;
   max-height: 30rem;
-  /* margin: 10rem 0; */
   width: 100%;
 }
 
 .symbol-container {
-  height: 120px;
-  width: 120px;
+  height: var(--symbol-size);
+  width: var(--symbol-size);
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
 }
 
@@ -149,12 +143,9 @@ main {
 
 .inner-circle {
   background-color: var(--white);
-  height: 90px;
-  width: 90px;
+  height: calc(0.75 * var(--symbol-size));
+  width: calc(0.75 * var(--symbol-size));
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 #paper {
@@ -162,8 +153,8 @@ main {
 }
 
 .top-left {
-  top: -65px;
-  left: -65px;
+  top: calc(-0.5 * var(--symbol-size));
+  left: calc(-0.5 * var(--symbol-size));
 }
 
 #scissors {
@@ -171,8 +162,8 @@ main {
 }
 
 .top-right {
-  top: -65px;
-  right: -65px;
+  top: calc(-0.5 * var(--symbol-size));
+  right: calc(-0.5 * var(--symbol-size));
 }
 
 #rock {
@@ -180,33 +171,19 @@ main {
 }
 
 .bottom-center {
-  bottom: -65px;
+  bottom: calc(-0.5 * var(--symbol-size));
   transform: translateX(-50%);
   left: 50%;
 }
 
-.btn-rules {
-  text-transform: uppercase;
-  width: 10rem;
-  margin: 2rem 0;
-  padding: 1rem;
-  border: 2px var(--white) solid;
-  border-radius: 10px;
-  letter-spacing: 3px;
-  font-weight: 600;
-}
-
+/* ---------- DUEL STAGE ---------- */
 .duel-stage {
   min-height: 24rem;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .picking-container {
-  /* height: 14rem; */
+  min-height: 15rem;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -214,31 +191,25 @@ main {
 }
 
 .picked-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   flex-wrap: nowrap;
 }
 
 .picked-text {
-  text-transform: uppercase;
   font-weight: 600;
   padding: 1rem 0;
   font-size: calc(0.8 * (var(--font-size)));
 }
 
 .symbol-placeholder {
-  height: 100px;
-  width: 100px;
+  height: 90px;
+  width: 90px;
   margin: 15px;
   border-radius: 50%;
   background-color: var(--dark-text);
 }
 
+/* ---------- RESULTS CONTAINER ---------- */
 .results-container {
-  /* height: 10rem; */
-  /* width: 12rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -246,22 +217,29 @@ main {
 }
 
 .result-info {
-  text-transform: uppercase;
   font-size: calc(2.5 * (var(--font-size)));
   margin: 1rem 0;
 }
 
 .btn-play-again {
-  text-transform: uppercase;
   width: 12rem;
   padding: 1rem;
   background-color: var(--white);
   color: var(--dark-text);
   border-radius: 10px;
   letter-spacing: 3px;
-  font-weight: 600;
 }
 
+.btn-rules {
+  width: 10rem;
+  margin: 2rem 0 0.5rem;
+  padding: 1rem;
+  border: 3px var(--white) solid;
+  border-radius: 10px;
+  letter-spacing: 3px;
+}
+
+/* ---------- UNIVERSAL CLASSES ---------- */
 .only-mobile {
   display: flex;
 }
@@ -270,8 +248,20 @@ main {
   display: none;
 }
 
-/* JS CLASSES */
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.flex-row-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ---------- JS USED CLASSES ---------- */
 .hidden {
   display: none !important;
 }
@@ -280,26 +270,26 @@ main {
   box-shadow: 0px 0px 20px 5px var(--white);
 }
 
-/* MEDIA QUERIES */
+.overflow {
+  overflow: hidden;
+}
+
+/* ---------- MEDIA QUERIES ---------- */
 @media (min-width: 600px) {
   .duel-stage .scale {
-    transform: scale(1.5);
+    transform: scale(1.25);
   }
 }
 
 @media (min-width: 1024px) {
-  main {
-    height: 30rem;
-    max-width: 1024px;
-  }
-
+  /* ---------- MODAL WINDOW ---------- */
   .modal-box {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     height: auto;
-    min-height: 50%;
-    width: 40%;
+    height: 75%;
+    width: auto;
     padding: 3rem;
     border-radius: 20px;
   }
@@ -313,8 +303,8 @@ main {
   }
 
   .modal-rules-img {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 80%;
   }
 
   .btn-close-modal {
@@ -333,26 +323,41 @@ main {
     z-index: 5;
   }
 
-  .triangle-img {
-    height: 15rem;
+  /* ---------- MAIN SECTION ---------- */
+  main {
+    height: 30rem;
+    max-width: 1024px;
   }
 
+  /* ---------- DUEL STAGE ---------- */
+  .duel-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .duel-stage .scale {
+    transform: scale(2);
+  }
+
+  .btn-play-again {
+    margin: 0 8rem;
+  }
+
+  /* ---------- SELECTION STAGE ---------- */
   .selection-stage .scale {
     transform: scale(1.25);
+  }
+
+  .triangle-img {
+    height: 15rem;
   }
 
   .bottom-center {
     transform: translateX(-50%) scale(1.25);
   }
 
-  .duel-stage .scale {
-    transform: scale(2.2);
-  }
-
-  .results-container {
-    margin: 0 5rem;
-  }
-
+  /* ---------- UNIVERSAL CLASSES ---------- */
   .only-mobile {
     display: none;
   }
