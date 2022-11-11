@@ -70,7 +70,7 @@ body {
 
 .modal-rules-img {
   width: auto;
-  height: 50%;
+  height: 40%;
 }
 
 /* ---------- HEADER SECTION ---------- */
@@ -278,11 +278,6 @@ main {
 @media (min-width: 600px) {
   .duel-stage .scale {
     transform: scale(1.25);
-  }
-
-  .modal-rules-img {
-    width: 70%;
-    height: auto;
   }
 }
 
