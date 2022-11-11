@@ -103,7 +103,6 @@ const gameApp = function () {
     }
     result === "draw" ? playAgain() : renderResult(result);
     updateScore(currentScore);
-    console.log(result, currentScore);
   };
 
   /* comparing symbols and checking the winner */
